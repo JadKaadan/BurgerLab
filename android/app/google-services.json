@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "185234665027",
+    "firebase_url": "https://burgerlab-6f1c3-default-rtdb.firebaseio.com",
+    "project_id": "burgerlab-6f1c3",
+    "storage_bucket": "burgerlab-6f1c3.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:185234665027:android:865fd1e62d10fcb5bf6ef6",
+        "android_client_info": {
+          "package_name": "com.example.flutterapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADb9Ir9uHFrAgRYcu8CGhvyEY-c1FeoQA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
