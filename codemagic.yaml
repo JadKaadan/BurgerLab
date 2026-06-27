@@ -13,26 +13,6 @@ workflows:
           flutter clean
           flutter pub get
 
-      - name: Patch Firebase iOS headers
-        script: |
-          set -e
-
-          DB_DIR=$(find "$HOME/.pub-cache/hosted/pub.dev" -maxdepth 1 -type d -name "firebase_database-*" | head -n 1)
-          AUTH_DIR=$(find "$HOME/.pub-cache/hosted/pub.dev" -maxdepth 1 -type d -name "firebase_auth-*" | head -n 1)
-          CORE_DIR=$(find "$HOME/.pub-cache/hosted/pub.dev" -maxdepth 1 -type d -name "firebase_core-*" | head -n 1)
-
-          if [ -n "$DB_DIR" ]; then
-            find "$DB_DIR/ios/Classes" -type f \( -name "*.h" -o -name "*.m" \) -exec perl -0pi -e 's|#import <Firebase/Firebase\.h>|#import <FirebaseCore/FirebaseCore.h>\n#import <FirebaseDatabase/FirebaseDatabase.h>|g' {} \;
-          fi
-
-          if [ -n "$AUTH_DIR" ]; then
-            find "$AUTH_DIR/ios/Classes" -type f \( -name "*.h" -o -name "*.m" \) -exec perl -0pi -e 's|#import <Firebase/Firebase\.h>|#import <FirebaseCore/FirebaseCore.h>\n#import <FirebaseAuth/FirebaseAuth.h>|g' {} \;
-          fi
-
-          if [ -n "$CORE_DIR" ]; then
-            find "$CORE_DIR/ios/Classes" -type f \( -name "*.h" -o -name "*.m" \) -exec perl -0pi -e 's|#import <Firebase/Firebase\.h>|#import <FirebaseCore/FirebaseCore.h>|g' {} \;
-          fi
-
       - name: Build iOS without signing
         script: |
           rm -rf ios/Pods ios/Podfile.lock
